@@ -37,10 +37,9 @@ def readfile(inlinker: str, timesrepeated=0):
         n += 1
     with open("data.json", 'w') as d:
         json.dump(bodymap,d,indent=3)
-        print(n%3)
     if n < 10:
         base = makevalid(inlinker)
-        base = f"{base}&after={last}"
+        base = f"{base}?after={last}"
         print(base)
         readfile(base, n)
     else:
