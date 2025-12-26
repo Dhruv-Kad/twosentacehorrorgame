@@ -24,14 +24,21 @@ current_index = 0
 def index():
     global current_index
     key = KEYS[current_index]
+    return render_template("index.html", key=key)
+
+@app.route("/reveal")
+def reveal():
+    global current_index
+    key = KEYS[current_index]
     value = DATA[key]
-    return render_template("index.html", key=key, value=value)
+    return render_template("solution.html", key=key, value=value)
 
 @app.route("/next")
 def next_key():
     global current_index
     current_index = (current_index + 1) % len(KEYS)
     return redirect(url_for("index"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
