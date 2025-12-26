@@ -2,12 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
+
 def makedict(file):
     try:
         with open(file, 'r') as target:
             return(json.load(target))
     except FileNotFoundError as e:
         return {}
+# This next one should be able to get any page and then keep "scrolling down" and return the next post
+
+def getnextpage(linknozelda: str):
+    html_content = requests.get(linknozelda).text
+    soup = BeautifulSoup(html_content, 'html.parser')
+    if not linknozelda.endswith('/'):
+        return
+
+
 def readfile(inlinker):
     html_content = requests.get(inlinker).text
     bodymap = makedict("data.json")
@@ -27,4 +37,5 @@ def readfile(inlinker):
 
 
 if __name__ == "__main__":
-    readfile()
+    readfile("https://reddit.com/r/TwoSentenceHorror/top/?t=day&count=25")
+
