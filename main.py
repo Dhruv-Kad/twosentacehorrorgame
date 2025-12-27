@@ -6,7 +6,8 @@ from reader import readfile
 
 # Really shit way of doing it, collects the top/new/best posts and puts them to the data.json
 def getposts():
-    urls = ["https://reddit.com/r/TwoSentenceHorror/new/", "https://reddit.com/r/TwoSentenceHorror/rising/", "https://www.reddit.com/r/TwoSentenceHorror/top/?t=month","https://reddit.com/r/TwoSentenceHorror/top/?t=week", "https://reddit.com/r/TwoSentenceHorror/rising/"]
+    #Add more urls to increase the number of posts found, maybe add hot and top for higher quality
+    urls = ["https://reddit.com/r/TwoSentenceHorror/new/"]
     for i, url in enumerate(urls):
         print(f"Fetching {i} url(s) from {url}")
         readfile(url)

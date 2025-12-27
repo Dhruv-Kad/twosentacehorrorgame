@@ -37,7 +37,8 @@ def readfile(inlinker: str, timesrepeated=0):
         n += 1
     with open("data.json", 'w') as d:
         json.dump(bodymap,d,indent=3)
-    if n < 23:
+    #Setting this number very high, best to change it if you want less posts to be fetched
+    if n < 123:
         base = makevalid(inlinker)
         base = f"{base}?after={last}"
         print(base)
